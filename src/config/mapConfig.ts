@@ -1,6 +1,8 @@
 import type { StyleSpecification } from 'maplibre-gl';
 import type { Coordinates } from '../types';
 
+export const MAX_MAP_ZOOM = 19;
+
 export const DEFAULT_MAP_CENTER: Coordinates = {
   lat: 41.5292,
   lng: -93.6554,

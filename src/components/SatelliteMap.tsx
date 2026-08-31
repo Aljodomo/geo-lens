@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Map as MapLibreMap, NavigationControl, ScaleControl } from 'maplibre-gl';
 import { ensureOverlayLayers } from '../services/mapOverlay';
-import { SATELLITE_MAP_STYLE } from '../config/mapConfig';
+import { SATELLITE_MAP_STYLE, MAX_MAP_ZOOM } from '../config/mapConfig';
 import type { Coordinates } from '../types';
 
 interface SatelliteMapProps {
@@ -28,7 +28,8 @@ export const SatelliteMap: React.FC<SatelliteMapProps> = ({ onMapReady, mapCente
       container: mapContainerRef.current,
       style: SATELLITE_MAP_STYLE,
       center: [initial.lng, initial.lat],
-      zoom: initial.zoom,
+      zoom: Math.min(initial.zoom, MAX_MAP_ZOOM),
+      maxZoom: MAX_MAP_ZOOM,
       attributionControl: false,
       canvasContextAttributes: { preserveDrawingBuffer: true },
     });
@@ -53,7 +54,7 @@ export const SatelliteMap: React.FC<SatelliteMapProps> = ({ onMapReady, mapCente
     if (!mapRef.current) return;
     mapRef.current.flyTo({
       center: [mapCenter.lng, mapCenter.lat],
-      zoom: mapCenter.zoom,
+      zoom: Math.min(mapCenter.zoom, MAX_MAP_ZOOM),
       speed: 1.2,
       essential: true,
     });
