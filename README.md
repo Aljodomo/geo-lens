@@ -2,6 +2,8 @@
 
 # GeoLens
 
+**Live Demo:** [https://geo-lens.aljo-domo.workers.dev/](https://geo-lens.aljo-domo.workers.dev/)
+
 In-browser satellite Earth observation and zero-shot AI object detection. Type any natural language prompt to detect, segment, and georeference targets over live ESRI satellite imagery entirely client-side.
 
 ## Features
