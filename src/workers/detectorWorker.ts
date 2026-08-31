@@ -8,6 +8,11 @@ import {
 import type { WorkerRequest, WorkerResponse, DetectedBoundingBox } from '../types';
 
 env.allowLocalModels = false;
+env.allowRemoteModels = true;
+if (env.backends?.onnx?.wasm) {
+  env.backends.onnx.wasm.numThreads = 1;
+  env.backends.onnx.wasm.proxy = false;
+}
 
 let model: any = null;
 let processor: any = null;
