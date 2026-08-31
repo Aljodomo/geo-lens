@@ -8,6 +8,7 @@ export interface GeocodeResult {
 }
 
 export async function searchLocations(query: string): Promise<GeocodeResult[]> {
+  // eslint-disable-next-line no-control-regex
   const sanitized = query.trim().slice(0, 100).replace(/[\x00-\x1F\x7F]/g, '');
   if (sanitized.length < 2) return [];
 

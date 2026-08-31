@@ -9,6 +9,12 @@ import type { WorkerRequest, WorkerResponse, DetectedBoundingBox } from '../type
 
 env.allowLocalModels = false;
 env.allowRemoteModels = true;
+env.fetch = (url: string | URL | Request, options?: RequestInit) => {
+  return fetch(url, {
+    ...options,
+    referrerPolicy: 'no-referrer',
+  });
+};
 if (env.backends?.onnx?.wasm) {
   env.backends.onnx.wasm.numThreads = 1;
   env.backends.onnx.wasm.proxy = false;
