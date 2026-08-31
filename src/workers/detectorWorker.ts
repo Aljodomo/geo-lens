@@ -36,7 +36,7 @@ async function initModel(): Promise<void> {
     tokenizer = await AutoTokenizer.from_pretrained(MODEL_ID);
     model = await CLIPSegForImageSegmentation.from_pretrained(MODEL_ID, {
       dtype: 'q8',
-      device: 'cpu',
+      device: 'wasm',
     });
     isLoaded = true;
   })();
