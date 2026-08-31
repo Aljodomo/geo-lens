@@ -8,9 +8,10 @@ export interface GeocodeResult {
 }
 
 export async function searchLocations(query: string): Promise<GeocodeResult[]> {
-  if (!query || query.trim().length < 2) return [];
+  const sanitized = query.trim().slice(0, 100).replace(/[\x00-\x1F\x7F]/g, '');
+  if (sanitized.length < 2) return [];
 
-  const coordMatch = query.match(/^([-+]?\d{1,2}(?:\.\d+)?),\s*([-+]?\d{1,3}(?:\.\d+)?)$/);
+  const coordMatch = sanitized.match(/^([-+]?\d{1,2}(?:\.\d+)?),\s*([-+]?\d{1,3}(?:\.\d+)?)$/);
   if (coordMatch) {
     const lat = parseFloat(coordMatch[1]);
     const lng = parseFloat(coordMatch[2]);
