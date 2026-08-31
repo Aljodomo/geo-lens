@@ -9,8 +9,6 @@ import type { WorkerRequest, WorkerResponse, DetectedBoundingBox } from '../type
 
 env.allowLocalModels = false;
 env.allowRemoteModels = true;
-env.remoteHost = `${self.location.origin}/hf/`;
-env.remotePathTemplate = '{model}/resolve/{revision}/';
 if (env.backends?.onnx?.wasm) {
   env.backends.onnx.wasm.numThreads = 1;
   env.backends.onnx.wasm.proxy = false;
@@ -32,7 +30,7 @@ async function initModel(): Promise<void> {
     tokenizer = await AutoTokenizer.from_pretrained(MODEL_ID);
     model = await CLIPSegForImageSegmentation.from_pretrained(MODEL_ID, {
       dtype: 'q8',
-      device: 'wasm',
+      device: 'cpu',
     });
     isLoaded = true;
   })();
