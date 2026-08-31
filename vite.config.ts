@@ -5,6 +5,6 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   optimizeDeps: {
-    exclude: ['@huggingface/transformers', 'maplibre-gl'],
+    exclude: ['@huggingface/transformers'],
   },
 })

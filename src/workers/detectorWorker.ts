@@ -9,6 +9,7 @@ import type { WorkerRequest, WorkerResponse, DetectedBoundingBox } from '../type
 
 env.allowLocalModels = false;
 env.allowRemoteModels = true;
+env.remotePathTemplate = '{model}/raw/{revision}/';
 if (env.backends?.onnx?.wasm) {
   env.backends.onnx.wasm.numThreads = 1;
   env.backends.onnx.wasm.proxy = false;
