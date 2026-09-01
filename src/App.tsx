@@ -72,7 +72,7 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-[#121212] text-[#e3e2e6] font-sans select-none">
+    <div className="relative w-screen h-[100dvh] overflow-hidden bg-[#121212] text-[#e3e2e6] font-sans select-none touch-manipulation">
       <HeaderNav
         onLocationSelect={handleLocationSelect}
         onScanViewport={handleScanViewport}
@@ -85,9 +85,9 @@ export const App: React.FC = () => {
 
       {isScanning && <ScanningHud />}
 
-      <div className="absolute bottom-4 left-4 z-20 pointer-events-none hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full md-surface-container text-xs font-mono text-neutral-400">
-        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-        <span>ESRI WORLD IMAGERY</span>
+      <div className="absolute bottom-[max(1rem,env(safe-area-inset-bottom,1rem))] left-4 z-20 pointer-events-none hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full md-surface-container text-xs font-mono text-neutral-400 border border-white/5 shadow-lg backdrop-blur-md">
+        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+        <span className="tracking-wide">ESRI WORLD IMAGERY</span>
       </div>
     </div>
   );

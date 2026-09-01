@@ -68,16 +68,34 @@
   filter: invert(1) grayscale(1) !important;
 }
 
+.maplibregl-ctrl-bottom-right {
+  bottom: max(1rem, env(safe-area-inset-bottom, 1rem)) !important;
+  right: max(1rem, env(safe-area-inset-right, 1rem)) !important;
+}
+
+.maplibregl-ctrl-bottom-left {
+  bottom: max(1rem, env(safe-area-inset-bottom, 1rem)) !important;
+  left: max(1rem, env(safe-area-inset-left, 1rem)) !important;
+}
+
 .maplibregl-ctrl-scale {
   background: rgba(30, 31, 34, 0.9) !important;
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
   border-top: none !important;
   color: #c4c6d0 !important;
   font-family: 'Roboto Mono', monospace !important;
-  font-size: 11px !important;
-  padding: 3px 8px !important;
-  border-radius: 0 0 8px 8px !important;
+  font-size: 10px !important;
+  padding: 2px 6px !important;
+  border-radius: 0 0 6px 6px !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 ::-webkit-scrollbar {
